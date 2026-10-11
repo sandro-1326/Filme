@@ -1,0 +1,291 @@
+/* ===== Palette (inspired by the army colours in Ran) =====
+   ink:    #1f1d1b   (main dark)
+   red:    #b3261e   (main accent)
+   yellow: #d9a62e   (card accent)
+   blue:   #2f5597   (card accent)
+   paper:  #f2f2ef   (text on dark / light panels)
+*/
+:root {
+    --ink: #1f1d1b;
+    --red: #b3261e;
+    --yellow: #d9a62e;
+    --blue: #2f5597;
+    --paper: #f2f2ef;
+    --gap: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Source Sans 3", Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 15px;
+    background-image: url("https://i.pinimg.com/736x/e2/c7/75/e2c7753ca69676d2016b570eba7a1b62.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+h1, h2, h3, .logo {
+    font-family: "Shippori Mincho", Georgia, "Times New Roman", serif;
+}
+
+a {
+    color: inherit;
+}
+
+/* ===== Page container: stacks the sections with Flexbox ===== */
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px var(--gap);
+    padding: 15px 25px;
+    background-color: var(--ink);
+    color: var(--paper);
+    border-radius: 8px;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+    border-bottom-color: var(--red);
+}
+
+/* ===== Hero ===== */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 40px 20px;
+    border-radius: 8px;
+    background-image:
+        linear-gradient(rgba(31, 29, 27, 0.55), rgba(31, 29, 27, 0.75)),
+        url("https://m.media-amazon.com/images/M/MV5BMTA0MzI1OTYwNTJeQTJeQWpwZ15BbWU4MDI1MjQ3NzUx._V1_QL75_UX660_.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: var(--paper);
+    max-width: 640px;
+}
+
+.hero h1 {
+    font-size: clamp(4rem, 14vw, 8rem);
+    line-height: 1;
+    margin: 0 0 15px;
+    letter-spacing: 0.1em;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    margin: 0;
+    text-align: center;
+    color: var(--paper);
+}
+
+/* ===== Content: 2 columns (main + aside) ===== */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;   /* mobile: stacked */
+    gap: var(--gap);
+}
+
+.main-col,
+.side-col {
+    background-color: var(--paper);
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.main-col h2,
+.side-col h3 {
+    margin-top: 0;
+}
+
+.side-col h3:not(:first-child) {
+    margin-top: 25px;
+}
+
+.info-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.info-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(31, 29, 27, 0.15);
+}
+
+.info-list a {
+    color: var(--red);
+}
+
+/* Synopsis block: responsive text size (mobile first) */
+.element {
+    font-size: 15px;
+    background-color: var(--ink);
+    color: var(--paper);
+    padding: 15px;
+    border-radius: 6px;
+}
+
+/* Tablet and above: 2 columns side by side */
+@media (min-width: 768px) {
+    .content-wrapper {
+        flex-direction: row;
+    }
+
+    .main-col {
+        flex: 2;
+    }
+
+    .side-col {
+        flex: 1;
+    }
+
+    .element {
+        font-size: 16px;
+        padding: 20px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .element {
+        font-size: 18px;
+        padding: 30px;
+    }
+}
+
+/* ===== Gallery ===== */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.gallery img {
+    flex: 1 1 250px;          /* grow, shrink, min 250px */
+    max-width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ===== Info cards ===== */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+}
+
+.card {
+    flex: 1;
+    min-width: 250px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    color: var(--paper);
+}
+
+.card h3 {
+    margin: 0 0 10px;
+}
+
+.card p {
+    margin: 0;
+    text-align: center;
+    color: inherit;
+}
+
+.card-yellow { background-color: var(--yellow); color: var(--ink); }
+.card-red    { background-color: var(--red); }
+.card-blue   { background-color: var(--blue); }
+
+/* ===== Footer ===== */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: var(--ink);
+    color: var(--paper);
+    border-radius: 8px;
+}
+
+.footer p {
+    margin: 0;
+    text-align: center;
+    color: var(--paper);
+    font-size: 14px;
+}
+
+.socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+    color: var(--yellow);
+}
+
+/* ===== Mobile navbar: stack logo and menu ===== */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+}
